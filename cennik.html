@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cennik – Szacunek Błażeja</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    body { padding-top: 69px; }
+
+    .pricing-wrap { background: var(--black); padding: 80px 48px; }
+    .cat-label {
+      font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.4em;
+      text-transform: uppercase; color: var(--gold);
+      padding: 10px 20px; border-left: 2px solid var(--gold);
+      background: rgba(201,168,76,0.04); display: inline-block;
+      margin-bottom: 20px; margin-top: 56px;
+    }
+    .cat-label:first-of-type { margin-top: 0; }
+
+    .price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-bottom: 4px; }
+
+    .pc {
+      background: var(--dark2); border: 1px solid rgba(201,168,76,0.08);
+      display: flex; flex-direction: column;
+      transition: border-color 0.3s, transform 0.3s, background 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .pc::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, transparent, var(--gold), transparent); transform: scaleX(0); transition: transform 0.4s; }
+    .pc:hover { border-color: rgba(201,168,76,0.28); background: rgba(201,168,76,0.03); transform: translateY(-3px); }
+    .pc:hover::after { transform: scaleX(1); }
+
+    .pc-icon { padding: 32px 28px 0; }
+    .pc-icon svg { width: 44px; height: 44px; display: block; }
+    .pc-body { padding: 18px 28px; flex: 1; }
+    .pc-name { font-family: 'Cinzel', serif; font-size: 0.84rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; line-height: 1.4; }
+    .pc-desc { font-size: 0.84rem; color: rgba(245,240,232,0.5); line-height: 1.78; }
+    .pc-foot {
+      padding: 18px 28px 28px; border-top: 1px solid rgba(201,168,76,0.08);
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto;
+    }
+    .pc-meta { display: flex; flex-direction: column; gap: 4px; }
+    .pc-price { font-family: 'Cinzel Decorative', serif; font-size: 1.3rem; color: var(--white); }
+    .pc-time { font-size: 0.73rem; color: var(--gray); letter-spacing: 0.07em; display: flex; align-items: center; gap: 5px; }
+    .pc-btn { padding: 10px 20px; background: transparent; border: 1px solid rgba(201,168,76,0.45); color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, border-color 0.2s; white-space: nowrap; }
+    .pc-btn:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); }
+
+    .pricing-cta { text-align: center; padding: 72px 48px; background: var(--dark); }
+    .pricing-cta p { color: rgba(245,240,232,0.55); font-size: 1rem; margin-bottom: 32px; line-height: 1.7; }
+
+    @media (max-width: 1100px) { .price-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 700px)  { .price-grid { grid-template-columns: 1fr; } .pricing-wrap { padding: 48px 18px; } }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo" href="index.html"><img src="img/logo.png" alt="Logo"/>Szacunek Błażeja</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Start</a></li>
+    <li><a href="o-nas.html">O nas</a></li>
+    <li><a href="cennik.html" class="active">Cennik</a></li>
+    <li><a href="galeria.html">Galeria</a></li>
+    <li><a href="rezerwacja.html">Rezerwacja</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('img/salon.png')"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <p class="page-hero-label">Usługi & Ceny</p>
+    <h1 class="page-hero-title"><span>Cennik</span></h1>
+    <div class="page-hero-divider"></div>
+  </div>
+</div>
+
+<div class="pricing-wrap">
+
+  <!-- STRZYŻENIE -->
+  <div class="cat-label reveal">Strzyżenie</div>
+  <div class="price-grid">
+
+    <div class="pc reveal">
+      <div class="pc-icon"><svg viewBox="0 0 64 64" fill="none"><path d="M20 48L26 20Q32 10 38 20L44 48" stroke="#C9A84C" stroke-width="2" fill="none" stroke-linecap="round"/><line x1="22" y1="36" x2="42" y2="36" stroke="#C9A84C" stroke-width="1.5"/><path d="M28 48L28 56M36 48L36 56" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <div class="pc-body">
+        <p class="pc-name">Strzyżenie Męskie</p>
+        <p class="pc-desc">Cięcie dopasowane do Twojego stylu i kształtu twarzy. Klasyka, nowoczesność? Ustalimy to przed strzyżeniem. W cenie: strzyżenie, stylizacja, mycie głowy na prośbę klienta.</p>
+      </div>
+      <div class="pc-foot">
+        <div class="pc-meta">
+          <span class="pc-price">60 zł</span>
+          <span class="pc-time"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#888" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>40 min</span>
+        </div>
+        <a href="rezerwacja.html" class="pc-btn">Umów</a>
+      </div>
+    </div>
+
+    <div class="pc reveal">
+      <div class="pc-icon"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="22" r="10" stroke="#C9A84C" stroke-width="2"/><path d="M14 52C14 40 50 40 50 52" stroke="#C9A84C" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M22 18Q32 10 42 18" stroke="#C9A84C" stroke-width="1.5" fill="none"/></svg></div>
+      <div class="pc-body">
+        <p class="pc-name">Strzyżenie Dziecięce <span style="display:block;font-size:0.72rem;color:var(--gray);margin-top:3px;">(Dzieci 6–10 lat)</span></p>
+        <p class="pc-desc">Strzyżenie od 6 roku życia. Profesjonalna obsługa najmłodszych klientów w przyjaznej atmosferze.</p>
+      </div>
+      <div class="pc-foot">
+        <div class="pc-meta"><span class="pc-price">50 zł</span><span class="pc-time"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#888" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>30 min</span></div>
+        <a href="rezerwacja.html" class="pc-btn">Umów</a>
+      </div>
+    </div>
+
+    <div class="pc reveal">
+      <div class="pc-icon"><svg viewBox="0 0 64 64" fill="none"><path d="M20 48L26 20Q32 10 38 20L44 48" stroke="#C9A84C" stroke-width="2" fill="none" stroke-linecap="round"/><line x1="22" y1="36" x2="42" y2="36" stroke="#C9A84C" stroke-width="1.5"/><path d="M20 50Q24 58 32 58Q40 58 44 50" stroke="#C9A84C" stroke-width="2" fill="none"/></svg></div>
+      <div class="pc-body">
+        <p class="pc-name">Strzyżenie + Broda + Kontur</p>
+        <p class="pc-desc">Pełne cięcie włosów i brody z konturem. Detale, które robią różnicę.</p>
+      </div>
+      <div class="pc-foot">
+        <div class="pc-meta"><span class="pc-price">100 zł</span><span class="pc-time"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#888" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>1g 5min</span></div>
+        <a href="rezerwacja.html" class="pc-btn">Umów</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BRODA -->
+  <div class="cat-label reveal">Broda</div>
+  <div class="price-grid">
+
+    <div class="pc reveal">
+      <div class="pc-icon"><svg viewBox="0 0 64 64" fill="none"><path d="M16 24Q18 12 32 14Q46 12 48 24Q52 36 46 46Q40 56 32 54Q24 56 18 46Q12 36 16 24Z" stroke="#C9A84C" stroke-width="2" fill="none"/><line x1="20" y1="32" x2="44" y2="32" stroke="#C9A84C" stroke-width="1.5"/><line x1="19" y1="40" x2="45" y2="40" stroke="#C9A84C" stroke-width="1.5"/></svg></div>
+      <div class="pc-body">
+        <p class="pc-name">Strzyżenie + Konturowanie Brody</p>
+        <p class="pc-desc">Broda pod kontrolą. Przycinanie, trymowanie, kontur, cieniowanie. Pielęgnacja w cenie.</p>
+      </div>
+      <div class="pc-foot">
+        <div class="pc-meta"><span class="pc-price">50 zł</span><span class="pc-time"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#888" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>30 min</span></div>
+        <a href="rezerwacja.html" class="pc-btn">Umów</a>
+      </div>
+    </div>
+
+    <div class="pc reveal">
+      <div class="pc-icon"><svg viewBox="0 0 64 64" fill="none"><path d="M16 24Q18 12 32 14Q46 12 48 24Q52 36 46 46Q40 56 32 54Q24 56 18 46Q12 36 16 24Z" stroke="#C9A84C" stroke-width="2" fill="none"/><circle cx="32" cy="36" r="6" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="3 2"/></svg></div>
+      <div class="pc-body">
+        <p class="pc-name">Odsiwianie / Cover Brody</p>
+        <p class="pc-desc">Nowy kolor, ten sam charakter. Trymowanie, przycinanie, cieniowanie, kontur brody + koloryzacja.</p>
+      </div>
+      <div class="pc-foot">
+        <div class="pc-meta"><span class="pc-price">70 zł</span><span class="pc-time"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#888" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>30 min</span></div>
+        <a href="rezerwacja.html" class="pc-btn">Umów</a>
+      </div>
+    </div>
+
+    <div class="pc reveal">
+      <div class="pc-icon"><svg viewBox="0 0 64 64" fill="none"><path d="M20 16L44 40L40 44L16 20Z" stroke="#C9A84C" stroke-width="2" fill="none"/><path d="M40 44L48 52Q52 56 48 52L40 44" stroke="#C9A84C" stroke-width="2"/><line x1="20" y1="16" x2="14" y2="10" stroke="#C9A84C" stroke-width="2"/></svg></div>
+      <div class="pc-body">
+        <p class="pc-name">Królewskie Golenie Brzytwą</p>
+        <p class="pc-desc">Tradycja i perfekcja spotykają się przy każdym pociągnięciu brzytwy. Golenie brody klasyczną metodą — rytuał pełen precyzji i szacunku dla rzemiosła. Delikatne, gładkie wykończenie.</p>
+      </div>
+      <div class="pc-foot">
+        <div class="pc-meta"><span class="pc-price">80 zł</span><span class="pc-time"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#888" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>30 min</span></div>
+        <a href="rezerwacja.html" class="pc-btn">Umów</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAKIETY -->
+  <div class="cat-label reveal">Pakiety & Specjalne</div>
+  <div class="price-grid">
+
+    <div class="pc reveal">
+      <div class="pc-icon"><svg viewBox="0 0 64 64" fill="none"><polygon points="32,8 38,26 58,26 42,38 48,56 32,44 16,56 22,38 6,26 26,26" stroke="#C9A84C" stroke-width="2" fill="none" stroke-linejoin="round"/></svg></div>
+      <div class="pc-body">
+        <p class="pc-name">Combo Królewskie</p>
+        <p class="pc-desc">Strzyżenie głowy dopasowane do Ciebie + przycinanie brody, trymowanie, kontur, cieniowanie + koloryzacja. Szacunek dla rzemiosła, szacunek dla stylu, szacunek dla Ciebie.</p>
+      </div>
+      <div class="pc-foot">
+        <div class="pc-meta"><span class="pc-price">130 zł</span><span class="pc-time"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#888" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>1g 30min</span></div>
+        <a href="rezerwacja.html" class="pc-btn">Umów</a>
+      </div>
+    </div>
+
+    <div class="pc reveal">
+      <div class="pc-icon"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="28" r="14" stroke="#C9A84C" stroke-width="2" fill="none"/><path d="M20 16L44 40" stroke="#C9A84C" stroke-width="1.5"/><path d="M44 40L50 46Q54 50 50 46" stroke="#C9A84C" stroke-width="2"/></svg></div>
+      <div class="pc-body">
+        <p class="pc-name">Królewskie Golenie Głowy Brzytwą</p>
+        <p class="pc-desc">Precyzja, jakiej nie daje żadna maszynka. Gładkie, królewskie golenie głowy klasyczną brzytwą.</p>
+      </div>
+      <div class="pc-foot">
+        <div class="pc-meta"><span class="pc-price">60 zł</span><span class="pc-time"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#888" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>40 min</span></div>
+        <a href="rezerwacja.html" class="pc-btn">Umów</a>
+      </div>
+    </div>
+
+    <div class="pc reveal">
+      <div class="pc-icon"><svg viewBox="0 0 64 64" fill="none"><path d="M24 12Q32 8 40 12L44 32Q44 48 32 52Q20 48 20 32Z" stroke="#C9A84C" stroke-width="2" fill="none"/><line x1="28" y1="24" x2="36" y2="24" stroke="#C9A84C" stroke-width="1.5"/><line x1="26" y1="32" x2="38" y2="32" stroke="#C9A84C" stroke-width="1.5"/></svg></div>
+      <div class="pc-body">
+        <p class="pc-name">Woskowanie</p>
+        <p class="pc-desc">Depilacja do wyboru: Nos, Uszy, Policzki, Kark. Całość 40 zł.</p>
+      </div>
+      <div class="pc-foot">
+        <div class="pc-meta"><span class="pc-price">20–40 zł</span><span class="pc-time"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#888" stroke-width="1.5"/><path d="M12 7v5l3 3" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>5 min</span></div>
+        <a href="rezerwacja.html" class="pc-btn">Umów</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="pricing-cta">
+  <p class="section-label">Nie wiesz co wybrać?</p>
+  <h2 class="section-title">Zarezerwuj <span>i zapytaj</span></h2>
+  <p>Podpowiemy Ci najlepszą opcję już na miejscu. Każdy klient jest inny — każde podejście też.</p>
+  <a href="rezerwacja.html" class="btn-gold">Zarezerwuj wizytę</a>
+</div>
+
+<footer>
+  <div class="footer-logo">Szacunek Błażeja</div>
+  <p class="footer-copy">&copy; 2025 Szacunek Błażeja &middot; Wszelkie prawa zastrzeżone</p>
+  <div class="footer-socials">
+    <a href="#" aria-label="Instagram">IG</a>
+    <a href="#" aria-label="Facebook">FB</a>
+    <a href="#" aria-label="TikTok">TK</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
